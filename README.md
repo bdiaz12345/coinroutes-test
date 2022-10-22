@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Make sure you run npm i before starting the application!
+Make sure you run ### `npm i`
 
 ## Available Scripts
 
