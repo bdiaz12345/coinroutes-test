@@ -1,5 +1,5 @@
 .container {
-    margin: 20px;
+    margin: 13px 20px 20px 20px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     height: 100vh;
@@ -31,6 +31,10 @@
 
   @media (max-width: 1000px) {
     .dashboard {
+      width: 100%;
+      height: 100vh;
+    }
+    .dashboard-dark-mode {
       width: 100%;
       height: 100vh;
     }
