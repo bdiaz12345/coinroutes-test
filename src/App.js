@@ -91,7 +91,7 @@ const App = () => {
       <Header />
       <CurrencyTitle>
         Selected Pair:{" "}
-        <Button sx={{ color: "#263238" }} onClick={handleClick}>
+        <Button sx={{ color: darkMode ? '#ffffff' : "#263238" }} onClick={handleClick}>
           {selectedPair ? selectedPair : "Loading..."}
         </Button>
         <Popover
