@@ -3,69 +3,9 @@ import OrderBookPrice from "./OrderBookPrice";
 import "../orderbook.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import axios from "axios";
-import styled from "styled-components";
+import "../styles.css";
 
-const BestContainer = styled.div`
-  display: flex;
-  border: 1px solid #263238;
-  margin-bottom: 2.2rem;
-  margin-top: 0.3rem;
-
-  @media (max-width: 1000px) {
-    width: 90%;
-    align-self: center;
-  }
-`;
-
-const BestBidContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  border: 1px solid #263238;
-
-  @media (max-width: 1000px) {
-    width: 80%;
-  }
-`;
-
-const BestAskContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  border: 1px solid #263238;
-  @media (max-width: 1000px) {
-    width: 80%;
-  }
-`;
-
-const ContainerTitle = styled.h2`
-  font-family: sans-serif;
-  color: #263238;
-  text-align: center;
-`;
-
-const BestSubContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  color: #263238;
-  align-items: center;
-`;
-
-const ContainerPrice = styled.h4`
-  font-family: sans-serif;
-  color: #263238;
-`;
-
-const ContainerQuantity = styled.h4`
-  font-family: sans-serif;
-  color: #263238;
-`;
-
-const OrderBook = ({ selectedPair }) => {
+const OrderBook = ({ selectedPair, darkMode }) => {
   const [bestBid, setBestBid] = useState([]);
   const [bestAsk, setBestAsk] = useState([]);
   const depth = undefined;
@@ -191,20 +131,46 @@ const OrderBook = ({ selectedPair }) => {
 
   return (
     <div className="orderbook__maindiv">
-      <BestContainer>
-        <BestBidContainer>
-          <ContainerTitle>Best Bid</ContainerTitle>
-          <BestSubContainer>
-            <ContainerPrice>Price: {bestBid[0]}</ContainerPrice>
-            <ContainerQuantity>Quantity: {bestBid[1]}</ContainerQuantity>
-          </BestSubContainer>
-        </BestBidContainer>
-        <BestAskContainer>
-          <ContainerTitle>Best Ask</ContainerTitle>
-          <ContainerPrice>Price: {bestAsk[0]}</ContainerPrice>
-          <ContainerQuantity>Quantity: {bestAsk[1]}</ContainerQuantity>
-        </BestAskContainer>
-      </BestContainer>
+      <div className={darkMode ? "best-container-dark-mode" : "best-container"}>
+        <div className={darkMode ? "dark-mode-bid-container" : "bid-container"}>
+          <h2
+            className={
+              darkMode ? "dark-mode-container-title" : "container-title"
+            }
+          >
+            Best Bid
+          </h2>
+          <h4
+            className={darkMode ? "dark-mode-container-text" : "container-text"}
+          >
+            Price: {bestBid[0]}
+          </h4>
+          <h4
+            className={darkMode ? "dark-mode-container-text" : "container-text"}
+          >
+            Quantity: {bestBid[1]}
+          </h4>
+        </div>
+        <div className={darkMode ? "dark-mode-bid-container" : "bid-container"}>
+          <h2
+            className={
+              darkMode ? "dark-mode-container-title" : "container-title"
+            }
+          >
+            Best Ask
+          </h2>
+          <h4
+            className={darkMode ? "dark-mode-container-text" : "container-text"}
+          >
+            Price: {bestAsk[0]}
+          </h4>
+          <h4
+            className={darkMode ? "dark-mode-container-text" : "container-text"}
+          >
+            Quantity: {bestAsk[1]}
+          </h4>
+        </div>
+      </div>
       <div className="OB">
         {selectedPair ? (
           <>

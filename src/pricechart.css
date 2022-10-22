@@ -13,6 +13,16 @@
     width: 50vw;
     border: 2px solid #263238;
   }
+
+  .dashboard-dark-mode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 81vh;
+    margin-bottom: 5rem;
+    width: 50vw;
+    border: 2px solid #ffffff;
+  }
   
   .chart-container {
     width: 80%;

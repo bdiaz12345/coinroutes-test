@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PriceChartDash from "./PriceChartDash";
 import "../pricechart.css";
 
-const PriceChart = ({ selectedPair }) => {
+const PriceChart = ({ selectedPair, darkMode }) => {
   const [price, setprice] = useState("0.00");
   const [pastData, setpastData] = useState({});
   const url = "https://api.pro.coinbase.com";
@@ -13,8 +13,8 @@ const PriceChart = ({ selectedPair }) => {
         {
           label: "Price",
           data: [],
-          backgroundColor: "#263238",
-          borderColor: "#263238",
+          backgroundColor: "skyblue",
+          borderColor: "skyblue",
           fill: false,
         },
       ],
@@ -81,7 +81,7 @@ const PriceChart = ({ selectedPair }) => {
 
   return (
     <div className="container">
-      <PriceChartDash price={price} data={pastData} />
+      <PriceChartDash darkMode={darkMode} price={price} data={pastData} />
     </div>
   );
 };

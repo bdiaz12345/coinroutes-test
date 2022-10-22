@@ -1,0 +1,11 @@
+.dark-mode {
+    color: #fff;
+    background-color: #313843;
+    height: 120vh;
+}
+
+@media (max-width: 1000px) {
+    .dark-mode {
+        height: 240vh;
+    }
+}

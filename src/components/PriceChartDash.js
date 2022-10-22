@@ -5,7 +5,7 @@ import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 Chart.register(CategoryScale);
 
-function PriceChartDash({ price, data }) {
+function PriceChartDash({ price, data, darkMode }) {
   const opts = {
     tooltips: {
       intersect: false,
@@ -18,12 +18,8 @@ function PriceChartDash({ price, data }) {
   Chart.defaults.plugins.legend.display = false;
 
   return (
-    <div className="dashboard">
-      <h2>{`${
-        data.datasets
-          ? "$" + price
-          : ""
-      }`}</h2>
+    <div className={darkMode ? "dashboard-dark-mode" : "dashboard"}>
+      <h2>{`${data.datasets ? "$" + price : ""}`}</h2>
       <div className="chart-container">
         {data.datasets ? <Line data={data} options={opts} /> : ""}
       </div>
