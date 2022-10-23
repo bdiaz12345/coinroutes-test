@@ -31,7 +31,7 @@ const OrderBook = ({ selectedPair, darkMode }) => {
       .catch(function (error) {
         console.error(error);
       });
-  }, []);
+  }, [ob]);
 
   useEffect(() => {
     const ws = new WebSocket(`wss://ws-feed.pro.coinbase.com`);
