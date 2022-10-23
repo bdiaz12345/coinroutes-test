@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import PriceChart from "./components/PriceChart";
 import OrderBook from "./components/OrderBook";
-import styled from "styled-components";
 import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
 import { CircularProgress } from "@mui/material";
@@ -15,55 +14,6 @@ const currencies = [
   { display_name: "LTC-USD" },
   { display_name: "BCH-USD" },
 ];
-
-const Option = styled.button`
-  color: #ffffff;
-  font-family: sans-serif;
-  background: #263238;
-  padding: 0.5rem 2rem;
-  cursor: pointer;
-`;
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-`;
-
-const CurrencyTitle = styled.h1`
-  font-family: sans-serif;
-  margin-left: 1.5rem;
-  font-size: 1rem;
-  margin-top: 1rem;
-`;
-
-const PriceChartTitle = styled.h2`
-  font-family: sans-serif;
-  margin-left: 1.5rem;
-`;
-
-const OrderBookTitle = styled.h2`
-  font-family: sans-serif;
-  margin-bottom: 5%;
-
-  @media (max-width: 1000px) {
-    margin-left: 5%;
-  }
-`;
-
-const MainContainer = styled.div`
-  display: flex;
-  height: 50vh;
-
-  @media (max-width: 1000px) {
-    flex-direction: column;
-  }
-`;
-const MainSubContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 const App = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -89,7 +39,7 @@ const App = () => {
   return (
     <div className={darkMode ? "dark-mode" : ""}>
       <Header />
-      <CurrencyTitle>
+      <h1 className="currency-title">
         Selected Pair:{" "}
         <Button sx={{ color: darkMode ? '#ffffff' : "#263238" }} onClick={handleClick}>
           {selectedPair ? selectedPair : "Loading..."}
@@ -105,36 +55,36 @@ const App = () => {
         >
           {currencies.map((cur, idx) => {
             return (
-              <Option onClick={handleSelect} key={idx} value={cur.id}>
+              <button className="option" onClick={handleSelect} key={idx} value={cur.id}>
                 {cur.display_name}
-              </Option>
+              </button>
             );
           })}
         </Popover>
-      </CurrencyTitle>
+      </h1>
       <Switch
         onClick={() => {
           setDarkMode(!darkMode);
         }}
       />
-      <MainContainer>
+      <div className="main-container">
         {selectedPair ? (
           <>
-            <MainSubContainer>
-              <PriceChartTitle>Price Chart</PriceChartTitle>
+            <div className="main-subcontainer">
+              <h2 className="pricechart-title">Price Chart</h2>
               <PriceChart darkMode={darkMode} selectedPair={selectedPair} />
-            </MainSubContainer>
-            <MainSubContainer>
-              <OrderBookTitle>Order Book</OrderBookTitle>
+            </div>
+            <div className="main-subcontainer">
+              <h2 className="orderbook-title">Order Book</h2>
               <OrderBook selectedPair={selectedPair} darkMode={darkMode} />
-            </MainSubContainer>
+            </div>
           </>
         ) : (
-          <Container>
+          <div className="loader-container">
             <CircularProgress />
-          </Container>
+          </div>
         )}
-      </MainContainer>
+      </div>
     </div>
   );
 };
