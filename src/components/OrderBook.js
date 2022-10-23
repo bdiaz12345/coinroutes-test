@@ -171,14 +171,14 @@ const OrderBook = ({ selectedPair, darkMode }) => {
           </h4>
         </div>
       </div>
-      <div className="OB">
+      <div className="orderbook">
         {selectedPair ? (
           <>
-            <div className="OB__header">
-              <div className="OB__header1 OB__subtext">Order Book</div>
-              <div className="OB__header2 OB__subtext">
-                <div className="OB__subtext">Size</div>
-                <div className="OB__subtext">Price</div>
+            <div className="orderbook-header">
+              <div className="orderbook-header1 orderbook-subtext">Order Book</div>
+              <div className="orderbook-header2 orderbook-subtext">
+                <div className="orderbook-subtext">Size</div>
+                <div className="orderbook-subtext">Price</div>
               </div>
             </div>
             <OrderBookPrice
@@ -186,21 +186,21 @@ const OrderBook = ({ selectedPair, darkMode }) => {
               orders={ob.asks}
               product_id={selectedPair}
             />
-            <div className="OB__S">
-              <div className="OB__SL OB__subtext">Spread:</div>
-              <div className="OB__SP OB__subtext">{spread}</div>
+            <div className="orderbook-S">
+              <div className="orderbook-SL orderbook-subtext">Spread:</div>
+              <div className="orderbook-SP orderbook-subtext">{spread}</div>
             </div>
             <OrderBookPrice
               type="buy"
               orders={ob.buys}
               product_id={selectedPair}
             />
-            <div className="OB__header">
-              <div className="OB__header1 OB__subtext">Order Book</div>
-              <div className="OB__header2 OB__subtext">
-                <div className="OB__subtext">Size</div>
-                <div className="OB__subtext">Price</div>
+            <div className="orderbook-header">
+              <div className="orderbook-header2 orderbook-subtext">
+                <div className="orderbook-subtext">Size</div>
+                <div className="orderbook-subtext">Price</div>
               </div>
+              <div className="orderbook-header1 orderbook-subtext">Order Book</div>
             </div>
           </>
         ) : (

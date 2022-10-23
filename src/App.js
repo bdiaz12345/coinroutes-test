@@ -51,6 +51,7 @@ const App = () => {
           onClose={handleClose}
           anchorOrigin={{
             vertical: "bottom",
+            horizontal: 'center'
           }}
         >
           {currencies.map((cur, idx) => {
