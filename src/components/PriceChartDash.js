@@ -18,7 +18,7 @@ function PriceChartDash({ price, data, darkMode }) {
   Chart.defaults.plugins.legend.display = false;
 
   return (
-    <div className={darkMode ? "dashboard-dark-mode" : "dashboard"}>
+    <div className={darkMode ? "pricechart-dark-mode" : "pricechart"}>
       <h2>{`${data.datasets ? "$" + price : ""}`}</h2>
       <div className="chart-container">
         {data.datasets ? <Line data={data} options={opts} /> : ""}
