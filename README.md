@@ -1,4 +1,4 @@
-# Getting Started with Coinroutes Test
+# Getting Started with Crypto Dash
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
