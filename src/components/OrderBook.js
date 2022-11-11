@@ -5,9 +5,12 @@ import CircularProgress from "@mui/material/CircularProgress";
 import axios from "axios";
 import "../styles.css";
 
+const aggregationOptions = [.1, .5, 1]
+
 const OrderBook = ({ selectedPair, darkMode }) => {
   const [bestBid, setBestBid] = useState([]);
   const [bestAsk, setBestAsk] = useState([]);
+  // const [aggregation, setAggregation] = useState(.1);
   const depth = undefined;
   const [ob, setOB] = useState({
     product_id: selectedPair,
@@ -33,6 +36,10 @@ const OrderBook = ({ selectedPair, darkMode }) => {
       });
   }, [ob]);
 
+  // const selectAggregation = (e) => {
+  //   setAggregation(e.target.value)
+  // }
+
   useEffect(() => {
     const ws = new WebSocket(`wss://ws-feed.pro.coinbase.com`);
 
@@ -49,6 +56,13 @@ const OrderBook = ({ selectedPair, darkMode }) => {
     ws.onmessage = (message) => {
       const data = JSON.parse(message.data);
       if (data.type === "snapshot") {
+        // data.asks.map((el, index) => {
+        //   if (index < data.asks.length - 1 && Number(el[0]) < Number(data.asks[index + 1][0]) && Number(data.asks[index + 1][0] - el[0]) <= aggregation + Number(data.asks[index + 1][1])) {
+        //     console.log('aggregation test', Number(el[1]) + Number(data.asks[index +1][1]))
+        //   } else if (index < data.asks.length - 1 && Number(el[0]) > Number(data.asks[index + 1][0]) && Number(el[0]) - Number(data.asks[index + 1][0]) <= aggregation + Number(data.asks[index + 1][1])) {
+        //     console.log('aggregation test', Number(el[1]) + Number(data.asks[index + 1][1]))
+        //   }
+        // })
         setOB((prevOB) => {
           data.asks.sort((a, b) =>
             Number(a[0]) < Number(b[0])
@@ -171,6 +185,12 @@ const OrderBook = ({ selectedPair, darkMode }) => {
           </h4>
         </div>
       </div>
+      {/* <select onClick={selectAggregation}>{
+        aggregationOptions.map(agg => {
+          return <option>{agg}</option>
+        })
+}
+      </select> */}
       <div className="orderbook">
         {selectedPair ? (
           <>
